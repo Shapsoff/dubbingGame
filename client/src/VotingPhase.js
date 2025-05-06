@@ -51,31 +51,45 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
         }
       };
 
+      const handleNextVid = () => {
+        setNextButtonText('Joueur suivant'); // Reset button text
+        setVideoNb((prevVideoNb) => {
+          if (prevVideoNb < maxVideoNb) {
+              setPlayerRank(0);
+              return prevVideoNb + 1; // Increment safely
+            } else {
+              // Fin de jeu → passer à la phase de résultats
+              console.log("Fin du jeu, passer à la phase de résultats");
+              return 0; // change scene
+            }
+          }); // Increment i safely
+      };
+    
           useEffect(() => {
-            console.log('socket changed ou setVideoNb du coup');
-            const handleNextVid = () => {
-                console.log('On est dans le handleNextVid');
-              // if (!(playerRank < audios.length - 1)) {
-              //   console.log("Emitting : "+audios[playerRank]?.playerId+" rating: "+rating+"rank: "+playerRank);
-              //   socket.emit("results", {
-              //     playerId: audios[playerRank]?.playerId,
-              //     rating: rating
-              //   });
-              // }
-              setNextButtonText('Joueur suivant'); // Reset button text
-              setVideoNb((prevVideoNb) => {
-                  console.log('la valeur de prevVideoNb est: '+prevVideoNb);
-                if (prevVideoNb < maxVideoNb) {
-                    console.log("On est dans le prevVideoNb+1");
-                    setPlayerRank(0);
-                    return prevVideoNb + 1; // Increment safely
-                  } else {
-                    // Fin de jeu → passer à la phase de résultats
-                    console.log("Fin du jeu, passer à la phase de résultats");
-                    return 0; // change scene
-                  }
-                }); // Increment i safely
-            };
+            // console.log('socket changed ou setVideoNb du coup');
+            // const handleNextVid = () => {
+            //     console.log('On est dans le handleNextVid');
+            //   // if (!(playerRank < audios.length - 1)) {
+            //   //   console.log("Emitting : "+audios[playerRank]?.playerId+" rating: "+rating+"rank: "+playerRank);
+            //   //   socket.emit("results", {
+            //   //     playerId: audios[playerRank]?.playerId,
+            //   //     rating: rating
+            //   //   });
+            //   // }
+            //   setNextButtonText('Joueur suivant'); // Reset button text
+            //   setVideoNb((prevVideoNb) => {
+            //       console.log('la valeur de prevVideoNb est: '+prevVideoNb);
+            //     if (prevVideoNb < maxVideoNb) {
+            //         console.log("On est dans le prevVideoNb+1");
+            //         setPlayerRank(0);
+            //         return prevVideoNb + 1; // Increment safely
+            //       } else {
+            //         // Fin de jeu → passer à la phase de résultats
+            //         console.log("Fin du jeu, passer à la phase de résultats");
+            //         return 0; // change scene
+            //       }
+            //     }); // Increment i safely
+            // };
 
             const handlePrevVid = () => {
               setVideoNb((prevVideoNb) => {
@@ -87,15 +101,13 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
               }); // Decrement i safely
             }; 
 
-            socket.off('nextVid', handleNextVid);
-            socket.off('prevVid', handlePrevVid);
               
-            socket.on('nextVid', handleNextVid); // Register the listener
+            // socket.on('nextVid', handleNextVid); // Register the listener
             socket.on('prevVid', handlePrevVid);
       
             // Cleanup the listener when the component unmounts
             return () => {
-                socket.off('nextVid', handleNextVid); // Remove the listener
+                // socket.off('nextVid', handleNextVid); // Remove the listener
                 socket.off('prevVid', handlePrevVid);
             };
           }, [socket, setVideoNb]); // Add dependencies to the effect
@@ -146,8 +158,8 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
     // END of potentiel component
 
 
-    const nextDub = () => { 
-        socket.emit("nextVid");
+    //const nextDub = () => { 
+      //  socket.emit("nextVid");
         // setVideoNb((prevVideoNb) => {
         //   if (prevVideoNb < 2) {
         //     setPlayerRank(0);
@@ -160,7 +172,7 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
         // }); // Increment videoNb safely
         // if last video
           // receive the results and display them
-    };
+    //};
 
     // const prevDub = () => {
     //     socket.emit("prevVid");
@@ -221,7 +233,8 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
             }
                 return prevPlayerRank + 1; // Increment safely
             } else {
-                nextDub(); // Prevent going out of bounds
+                // nextDub(); // Prevent going out of bounds
+                handleNextVid();
             }
           });
           // Get playerId and client rating
