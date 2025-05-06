@@ -54,6 +54,7 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
           useEffect(() => {
             console.log('socket changed ou setVideoNb du coup');
             const handleNextVid = () => {
+                console.log('On est dans le handleNextVid');
               // if (!(playerRank < audios.length - 1)) {
               //   console.log("Emitting : "+audios[playerRank]?.playerId+" rating: "+rating+"rank: "+playerRank);
               //   socket.emit("results", {
