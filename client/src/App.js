@@ -6,7 +6,7 @@ import GamePhase from './GamePhase';
 import VotingPhase from './VotingPhase'; // Assurez-vous d'importer le composant VotingPhase
 import Result from './Result';
 
-const socket = io('http://localhost:3001', {
+const socket = io('https://dubbinggame.onrender.com', {
   transports: ['websocket'], // Force l'utilisation de WebSockets
 });
 
