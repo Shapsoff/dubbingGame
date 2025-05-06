@@ -62,7 +62,9 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
               // }
               setNextButtonText('Joueur suivant'); // Reset button text
               setVideoNb((prevVideoNb) => {
+                  console.log('la valeur de prevVideoNb est: '+prevVideoNb);
                 if (prevVideoNb < maxVideoNb) {
+                    console.log("On est dans le prevVideoNb+1");
                     setPlayerRank(0);
                     return prevVideoNb + 1; // Increment safely
                   } else {
