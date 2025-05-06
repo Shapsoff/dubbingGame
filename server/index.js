@@ -20,12 +20,13 @@ app.use(bodyParser.json());
 
 
 const username = process.env.MONGO_USER;
+const password = process.env.MONGO_PASSWORD
 const dbName = process.env.MONGO_DB_NAME;
 
 app.post('/api/check-password', (req, res) => {
   console.log('Il y reception d\'un post');
   const { password } = req.body;
-  const PASSWORD = process.env.MONGO_PASSWORD; // A changer plus tard, mettre dans une base de données sécurisé ou variable d'environnement
+  const PASSWORD = process.env.GAME_PASSWORD; // A changer plus tard, mettre dans une base de données sécurisé ou variable d'environnement
   if (password === PASSWORD) {
     res.json({ success: true });
   } else {
