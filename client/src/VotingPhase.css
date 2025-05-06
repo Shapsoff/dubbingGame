@@ -1,0 +1,186 @@
+.ytbPlayerVoting {
+    grid-area: ytbPlayerVoting;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.ytbPlayerVoting iframe {
+    width: 98vh;
+    height: 55vh;
+}
+
+.startBtnVoting {
+    grid-area: startBtnVoting;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #45a049;
+    }
+
+    &:active {
+        background-color: #45a049;
+    }
+}
+
+.nextVidBtnVoting {
+    grid-area: nextVidBtnVoting;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 4vh 0;
+}
+
+.nextVidBtnVoting button {
+    width: 70%;
+    height: 100%;
+    background-color: #FFD700;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative; /* Required for the pseudo-element */
+    overflow: hidden; /* Ensures the shine effect stays within the button */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.nextVidBtnVoting button:hover {
+    transform: scale(1.1) rotate(-7deg);
+    background-color: #FFD700;
+}
+
+/* Add the shine effect */
+.nextVidBtnVoting button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(45deg);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nextVidBtnVoting button:hover::before {
+    animation: shine 0.8s ease forwards;
+    opacity: 1;
+}
+
+/* Shine animation */
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+
+.prevVidBtnVoting {
+    grid-area: prevVidBtnVoting;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 4vh 0;
+}
+
+.audioContainer {
+    grid-area: audioContainer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.audioContainer p{
+    margin: 0 0 0 0;
+}
+
+.audioContainer audio {
+    margin: 0 0 1em 0;
+}
+
+.ratingContainer {
+    grid-area: ratingContainer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 1em 0;
+}
+
+.ratingContainer p {
+    margin: 0 0 0 0;
+}
+
+.nextPlayerBtnVoting {
+    grid-area: nextPlayerBtnVoting;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nextPlayerBtnVoting button {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.prevPlayerBtnVoting {
+    grid-area: prevPlayerBtnVoting;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nextPlayerBtnVoting button,.prevPlayerBtnVoting button {
+    background-color: #5aa8bc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #4694a7;
+    }
+
+    &:active {
+        background-color: #4694a7;
+    }
+}
+
+.containerVotingPhase {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 2vw 1fr 3vw 1fr 1fr 3vw 1fr 2vw;
+    grid-template-rows: 5vh 55vh 3vh 7vh 16vh 6vh 8vh;
+    grid-template-areas: 
+        ". . . . . . . ."
+        ". ytbPlayerVoting ytbPlayerVoting ytbPlayerVoting ytbPlayerVoting ytbPlayerVoting ytbPlayerVoting ."
+        ". . . . . . . ."
+        ". . . audioContainer audioContainer . . ."
+        ". prevPlayerBtnVoting prevPlayerBtnVoting ratingContainer ratingContainer nextPlayerBtnVoting nextPlayerBtnVoting ."
+        ". . . startBtnVoting startBtnVoting . . ."
+        ". prevVidBtnVoting . . . . nextVidBtnVoting .";
+    justify-content: center;
+}

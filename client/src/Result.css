@@ -1,0 +1,48 @@
+.title {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rankingList {
+    grid-area: rankingList;
+    font-size: 1.2rem;
+}
+
+.clearAudiosBtn {
+    grid-area: clearAudiosBtn;
+    align-items: center;
+    display: flex;
+    width: 50%;
+    height: 80%;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: rgb(227, 23, 23);
+    justify-self: center;
+    align-self: center;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.clearAudiosBtn:hover {
+    background-color: darkred;
+    color: lightgray;
+    cursor: pointer;
+}
+
+.resultContainer {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 25vw 50vw 25vw;
+    grid-template-rows: 10vh 10vh 1fr 10vh 7vh;
+    grid-template-areas: 
+        ". . ."
+        ". title ."
+        ". rankingList ."
+        ". clearAudiosBtn ."
+        ". . .";
+};

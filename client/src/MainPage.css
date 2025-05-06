@@ -1,0 +1,76 @@
+.usersList {
+    grid-area: usersList;
+}
+.startGame {
+    grid-area: startGame;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+.startGame button {
+    background-color: #0073ff; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+.startGame button:hover {
+    background-color: #0060d6;
+}
+
+
+.readyHandler {
+    grid-area: readyHandler;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.readyHandler button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 124px;
+}
+.readyHandler button.red {
+    background-color: red;
+}
+
+.readyHandler button.red:hover {
+    background-color: darkgreen; /* Hover effect when not ready */
+}
+
+.readyHandler button.green {
+    background-color: green;
+}
+
+.readyHandler button.green:hover {
+    background-color: darkred; /* Hover effect when ready */
+}
+
+.containerMainPage {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 2vw 1fr 3vh 1fr 1fr 1fr 5vw;
+    grid-template-rows: 40vh 10vh 10vh 40vh;
+    grid-template-areas: 
+        ". usersList . . . . ."
+        ". usersList . readyHandler readyHandler . ."
+        ". usersList . startGame startGame . ."
+        ". usersList . . . . .";
+    justify-content: center;
+}
