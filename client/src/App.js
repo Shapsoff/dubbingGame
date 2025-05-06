@@ -24,7 +24,7 @@ const App = () => {
   const handleLogin = (password, pseudo) => {
     console.log('On est dans la fonction handleLogin, on va essayer de post, est voici le mdp entré: ' + password);
     // Envoyer le mot de passe au serveur pour vérification
-    fetch('http://localhost:3001/api/check-password', {
+    fetch('https://dubbinggame.onrender.com/api/check-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
