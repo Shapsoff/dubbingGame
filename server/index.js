@@ -86,6 +86,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('nextVid', () => {
+    console.log('Jai ressu nextVid');
     io.emit('nextVid');
   });
 
