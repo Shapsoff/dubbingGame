@@ -52,6 +52,7 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
       };
 
           useEffect(() => {
+            console.log('socket changed ou setVideoNb du coup');
             const handleNextVid = () => {
               // if (!(playerRank < audios.length - 1)) {
               //   console.log("Emitting : "+audios[playerRank]?.playerId+" rating: "+rating+"rank: "+playerRank);
@@ -85,7 +86,9 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
               }); // Decrement i safely
             }; 
 
-      
+            socket.off('nextVid', handleNextVid);
+            socket.off('prevVid', handlePrevVid);
+              
             socket.on('nextVid', handleNextVid); // Register the listener
             socket.on('prevVid', handlePrevVid);
       
