@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import './LoginPage.css';
 
 const LoginPage = ({ onLogin }) => {
   const [password, setPassword] = useState('');
@@ -108,7 +109,7 @@ const LoginPage = ({ onLogin }) => {
   }, []);
   
   return (
-    <div>
+    <div className='loginContainer'>
       <h1>Connexion</h1>
       <form onSubmit={handleSubmit}>
         <input
