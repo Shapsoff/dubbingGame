@@ -6,7 +6,8 @@ import GamePhase from './GamePhase';
 import VotingPhase from './VotingPhase'; // Assurez-vous d'importer le composant VotingPhase
 import Result from './Result';
 
-const socket = io(process.env.REACT_APP_SERVER_URL, {
+console.log('Server URL:', process.env.REACT_APP_SERVER_URL);
+const socket = io(`${process.env.REACT_APP_SERVER_URL}`, {
   transports: ['websocket'], // Force l'utilisation de WebSockets
 });
 
