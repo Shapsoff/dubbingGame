@@ -6,7 +6,7 @@ import GamePhase from './GamePhase';
 import VotingPhase from './VotingPhase'; // Assurez-vous d'importer le composant VotingPhase
 import Result from './Result';
 
-const socket = io('https://dubbinggame.onrender.com', {
+const socket = io(process.env.REACT_APP_SERVER_URL, {
   transports: ['websocket'], // Force l'utilisation de WebSockets
 });
 
@@ -24,7 +24,7 @@ const App = () => {
   const handleLogin = (password, pseudo) => {
     console.log('On est dans la fonction handleLogin, on va essayer de post, est voici le mdp entré: ' + password);
     // Envoyer le mot de passe au serveur pour vérification
-    fetch('https://dubbinggame.onrender.com/api/check-password', {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/api/check-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
