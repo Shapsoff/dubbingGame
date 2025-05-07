@@ -164,6 +164,7 @@ io.on('connection', (socket) => {
     try {
       await Audio.deleteMany({}); // Deletes all documents in the "audios" collection
       console.log('All audios have been cleared.');
+      usersResults.length = 0; // Clears all elements in the usersResults array
       socket.emit('clearAudiosSuccess', { message: 'Audios cleared successfully.' });
     } catch (error) {
       console.error('Error clearing audios:', error);
