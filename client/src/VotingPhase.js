@@ -16,7 +16,6 @@ const VotingPhase = ({ socket, videoNb, setVideoNb }) => {
     const [audios, setAudios] = useState([]);
     const [playerRank, setPlayerRank] = useState(0);
     const maxVideoNb = Object.keys(videoData).length; // Get the number of videos in videoData
-    console.log('maxVideoNb: '+maxVideoNb);
     const audioRefs = useRef([]);
     const [nextButtonText, setNextButtonText] = useState("Joueur suivant"); 
 
